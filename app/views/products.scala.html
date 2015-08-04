@@ -1,0 +1,30 @@
+@(message: String, name: String, cats: Seq[Cat])
+
+<!DOCTYPE html>
+<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1 id="message">@message</h1>
+        <h2>@name</h2>
+        @if(cats.size == 1) {
+            <h1>Nothing to display</h1>
+        } else {
+            <ul>
+            @cats.map { cat => <li>@cat.name</li> }
+            </ul>
+        }
+    </body>
+
+    <script>
+
+ $(document).ready(function() {
+    console.log( "ready!" );
+    console.log("Hello @(message)")
+ });
+
+    </script>
+</html>

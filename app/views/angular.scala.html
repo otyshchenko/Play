@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="@routes.Assets.at("javascripts/angular.min.js")"></script>
+    </head>
+    <body ng-app="myapp">
+        <div ng-controller="HelloController">
+            <h2>Welcome {{helloTo.title}} to the world of Tutorialspoint!</h2>
+        </div>
+        <script>
+
+         angular.module( "myapp", [])
+         .controller("HelloController", function($scope,$http) {
+
+         $http.get( "/angular/status").success( function(response) {
+                           $scope.helloTo.title = response;
+                        });
+            $scope.helloTo = {};
+         });
+
+      </script>
+    </body>
+</html>
